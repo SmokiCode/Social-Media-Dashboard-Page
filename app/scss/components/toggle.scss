@@ -1,0 +1,85 @@
+@use '../util'  as *;
+
+.toggle { 
+    display: grid;
+    border: none;
+    grid-template-columns: 1fr 1fr ;
+    gap: 4px 8px;
+    //margin: 0;
+  
+    label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-color);
+  
+      &[for='dark'] {
+        grid-column: 1 / 2;
+        justify-self: end;
+       
+      }
+      &[for='light'] {
+        grid-column: 3 / 4;
+      }
+    }
+  
+    &__wrapper {
+      position: relative;
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      height: 24px;
+      border-radius: 12px;
+    }
+  
+    input[type='radio'] {
+      margin: 0 -1px 0 0;
+      width: 22px;
+      height: 22px;
+      accent-color: #3DED97;
+      
+      //USE accent-color property to change the radio button color
+     /* &:focus ~ .toggle__button {
+        border: 2px solid white;
+      }*/
+    }
+  
+    &__background {
+      position: absolute;
+      display: block;
+      height: 100%;
+      border-radius: 12px;
+      width: 100%;
+      top: 0;
+      background: linear-gradient(225deg, var(--toggle-background-end)0%, var(--toggle-background-start)98.02%);
+      pointer-events: none;
+    }
+  
+    &__button {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: 2px;
+      top: 2px;
+      right: 100%;
+      border-radius: 50%;
+      background-color: var(--toggle);
+      transition: all 150ms ease-in-out;
+    }
+   //use sibling selector ~ and follow the order of the markup
+   //in order to move the toggle button
+    #dark:checked ~ .toggle__button {
+      left: 5%;
+      right: 3px;
+    }
+    #light:checked ~ .toggle__button {
+      left: 55%;
+      right: auto;
+      transform: translate(-5%);
+    }
+  /*
+    #system:checked ~ .toggle__button {
+      left: 50%;
+      right: auto;
+      transform: translate(-50%);
+    }
+*/
+}

@@ -1,0 +1,12 @@
+@use '../util'  as *;
+
+.footer {
+    padding: 25px;
+    text-align: center;
+    font-weight: 700;
+}
+.footer a {
+    font-size: 14px;
+    color: hsl(228, 45%, 44%);
+    font-weight: 700;
+}
